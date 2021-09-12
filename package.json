@@ -4,7 +4,8 @@
   "description": "Library to unify communication with 1C:Enterprise platform.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "release": "standard-version",
+    "release-test": "standard-version --dry-run"
   },
   "repository": {
     "type": "git",
@@ -13,12 +14,22 @@
   "keywords": [
     "1c",
     "skripio",
-    "fmecgroup"
+    "fmec"
   ],
   "author": "Andrey Skripchenko",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fmecgroup/skripio-helper-response-emitter/issues"
   },
-  "homepage": "https://github.com/fmecgroup/skripio-helper-response-emitter#readme"
+  "homepage": "https://github.com/fmecgroup/skripio-helper-response-emitter#readme",
+  "dependencies": {},
+  "standard.options": {
+    "ignore": [
+      "node_modules/**"
+    ]
+  },
+  "devDependencies": {
+    "semistandard": "^16.0.1",
+    "standard-version": "^9.3.1"
+  }
 }
