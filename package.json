@@ -1,0 +1,24 @@
+{
+  "name": "skripio-helper-response-emitter",
+  "version": "1.0.0",
+  "description": "Library to unify communication with 1C:Enterprise platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fmecgroup/skripio-helper-response-emitter.git"
+  },
+  "keywords": [
+    "1c",
+    "skripio",
+    "fmecgroup"
+  ],
+  "author": "Andrey Skripchenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fmecgroup/skripio-helper-response-emitter/issues"
+  },
+  "homepage": "https://github.com/fmecgroup/skripio-helper-response-emitter#readme"
+}
