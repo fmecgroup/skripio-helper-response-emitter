@@ -2,9 +2,9 @@
 import languages from './modules/languages.js';
 
 /**
- * **Skripio response emitter object.**
- * @param {String} responseDOMElementSelector DOM element selector that will be used to emit async responses.
- */
+* **A response emitter object.**
+* @param {string} responseDOMElementSelector DOM element selector that will be used to emit async responses.
+*/
 export default class ResponseEmitter {
   constructor (responseDOMElementSelector) {
     try {
@@ -23,11 +23,13 @@ export default class ResponseEmitter {
   }
 
   /**
-  * **Get response codes constant values.**
-  * @returns {Object} Object, that contains response codes.
-  * @static
+  * **`ResponseEmitter.codes` constants.**
+  * - **DONE** - 200
+  * - **RESULT** - 201
+  * - **USER_ERROR** - 300
+  * - **DEV_ERROR** - 400
   */
-  static get CODES () {
+  static get codes () {
     return {
       DONE: '200',
       RESULT: '201',
@@ -38,8 +40,8 @@ export default class ResponseEmitter {
 
   /**
   * **Generates 1C formatted notification message from phrases in different languages.**
-  * @param {Object} phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
-  * @returns {String} Formatted text or an empty string if object provided contains no keys with language codes.
+  * @param {object} phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
+  * @returns {string} Formatted text or an empty string if object provided contains no keys with language codes listed in [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
   * @example
   * {
   *   ru: 'Сообщение на Русском языке.',
@@ -64,11 +66,11 @@ export default class ResponseEmitter {
 
   /**
   * **Generates response structure. Emits click event with payload of required.**
-  * @param id Any attribute to be placed against id key of the return structure.
-  * @param code Any attribute to be placed against code key of the return structure.
-  * @param message Any attribute to be placed against message key of the return structure.
-  * @param {Boolean} click If truthy then click event with payload will be emitted no event emitting otherwise.
-  * @returns {String} response structure stringified.
+  * @param {*} id Any attribute to be placed against id key of the return structure.
+  * @param {*} code Any attribute to be placed against code key of the return structure.
+  * @param {*} message Any attribute to be placed against message key of the return structure.
+  * @param {boolean} click If truthy then click event with payload will be emitted. No event emitting otherwise.
+  * @returns {string} response structure stringified.
   */
   emitResponse (id, code, message, click = false) {
     const result = JSON.stringify({

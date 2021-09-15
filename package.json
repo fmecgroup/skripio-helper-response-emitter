@@ -4,9 +4,9 @@
   "description": "Library to unify communication with 1C:Enterprise platform.",
   "main": "index.js",
   "scripts": {
-    "release-it": "standard-version",
-    "release-test": "standard-version --dry-run",
-    "document-it": ""
+    "release-test": "standard-version -a --dry-run",
+    "release-it": "standard-version -a",
+    "document-it": "documentation readme ./index.js -s=\"Reference\" --markdown-toc-max-depth=3 --shallow --sort-order=alpha"
   },
   "repository": {
     "type": "git",
@@ -24,14 +24,19 @@
   },
   "homepage": "https://github.com/fmecgroup/skripio-helper-response-emitter#readme",
   "dependencies": {},
+  "devDependencies": {
+    "documentation": "^13.2.5",
+    "semistandard": "^16.0.1",
+    "standard-version": "^9.3.1"
+  },
   "standard.options": {
     "ignore": [
       "node_modules/**"
     ]
   },
-  "devDependencies": {
-    "documentation": "^13.2.5",
-    "semistandard": "^16.0.1",
-    "standard-version": "^9.3.1"
+  "standard-version": {
+    "scripts": {
+      "prerelease": "npm run document-it && git add ./README.md"
+    }
   }
 }
