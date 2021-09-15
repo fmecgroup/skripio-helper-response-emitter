@@ -1,11 +1,12 @@
 {
-  "name": "skripio-helper-response-emitter",
+  "name": "@skripio/response-emitter",
   "version": "1.0.0",
   "description": "Library to unify communication with 1C:Enterprise platform.",
   "main": "index.js",
   "scripts": {
-    "release": "standard-version",
-    "release-test": "standard-version --dry-run"
+    "release-it": "standard-version",
+    "release-test": "standard-version --dry-run",
+    "document-it": ""
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     ]
   },
   "devDependencies": {
+    "documentation": "^13.2.5",
     "semistandard": "^16.0.1",
     "standard-version": "^9.3.1"
   }
