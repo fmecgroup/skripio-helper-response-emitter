@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/fmecgroup/skripio-helper-response-emitter/compare/v1.0.0...v1.0.1) (2021-09-18)
+
+
+### Bug Fixes
+
+* Rename message to payload ([5b00bdb](https://github.com/fmecgroup/skripio-helper-response-emitter/commit/5b00bdbd9ff9f01e238a3bb3bb384b2bb28c90a6)), closes [AB#1927](https://github.com/fmecgroup/AB/issues/1927)
+
 ## 1.0.0 (2021-09-15)
 
 
