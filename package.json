@@ -6,7 +6,7 @@
   "scripts": {
     "release-test": "standard-version -a --dry-run",
     "release-it": "standard-version -a",
-    "document-it": "documentation readme ./index.js -s=\"Reference\" --markdown-toc-max-depth=3 --shallow --sort-order=alpha"
+    "document-it": "documentation readme ./index.js -s=\"Reference\" --markdown-toc-max-depth=3 --sort-order=alpha"
   },
   "repository": {
     "type": "git",
