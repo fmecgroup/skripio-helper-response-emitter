@@ -65,18 +65,18 @@ export default class ResponseEmitter {
   }
 
   /**
-  * **Generates response structure. Emits click event with payload of required.**
-  * @param {*} id Any attribute to be placed against id key of the return structure.
-  * @param {*} code Any attribute to be placed against code key of the return structure.
-  * @param {*} message Any attribute to be placed against message key of the return structure.
-  * @param {boolean} click If truthy then click event with payload will be emitted. No event emitting otherwise.
-  * @returns {string} response structure stringified.
+  * **Generates serialized response message object. Emits `click` event if required.**
+  * @param {*} id Any attribute to be placed against id key of the message object.
+  * @param {*} code Any attribute to be placed against code key of the message object.
+  * @param {*} payload Any attribute to be placed against payload key of the message object.
+  * @param {boolean} click If truthy then click event with serialized message object will be emitted. No event emitting otherwise.
+  * @returns {string} response message object serialized.
   */
-  emitResponse (id, code, message, click = false) {
+  emitResponse (id, code, payload, click = false) {
     const result = JSON.stringify({
       id: id,
       code: code,
-      message: message
+      payload: payload
     });
 
     if (click) {

@@ -1,4 +1,5 @@
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/standard/semistandard)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 # About
 
@@ -14,20 +15,20 @@ npm install @skripio/response-emitter
 
 # Usage
 
-1.  Import `ResponseEmitter` class and instantiate object passing DOM element selector that points to an element which will receive click event when response is emitted.
+1.  Import `ResponseEmitter` class and instantiate object passing DOM element selector that points to an element which will receive click event when response message is emitted.
 
 ```JavaScript
     import ResponseEmitter from '@skripio/response-emitter';
     const rm = new ResponseEmitter('#response');
 ```
 
-2.  Call object methods to emit response or to do auxiliary stuff.
+2.  Call object methods to emit response message or to do auxiliary stuff.
 
 # Response
 
-**Skripio** `ResponseEmitter` prepares and emits response message payload to [1C:Enterprise](https://www.1ci.com/developers/) platform.
+**Skripio** `ResponseEmitter` prepares and emits response message object to [1C:Enterprise](https://www.1ci.com/developers/) platform.
 
-Response payload is guaranteed to have following structure:
+Response message is guaranteed to have following structure:
 
 ```json
     { 
@@ -37,7 +38,7 @@ Response payload is guaranteed to have following structure:
     }
 ```
 
-where,
+where:
 
 *   **callback** - contains callback identifier that allows to link function calls to responses when executing asynchronous code in `JS` from `1C:Enterprise`.
 *   **code** - Response code.
@@ -65,16 +66,16 @@ where,
 
 ### emitResponse
 
-**Generates response structure. Emits click event with payload of required.**
+**Generates serialized response message object. Emits `click` event if required.**
 
 #### Parameters
 
-*   `id` **any** Any attribute to be placed against id key of the return structure.
-*   `code` **any** Any attribute to be placed against code key of the return structure.
-*   `message` **any** Any attribute to be placed against message key of the return structure.
-*   `click` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** If truthy then click event with payload will be emitted. No event emitting otherwise. (optional, default `false`)
+*   `id` **any** Any attribute to be placed against id key of the message object.
+*   `code` **any** Any attribute to be placed against code key of the message object.
+*   `payload` **any** Any attribute to be placed against payload key of the message object.
+*   `click` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** If truthy then click event with serialized message object will be emitted. No event emitting otherwise. (optional, default `false`)
 
-Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** response structure stringified.
+Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** response message object serialized.
 
 ### get1cFormattedMessage
 
