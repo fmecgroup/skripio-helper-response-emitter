@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/fmecgroup/skripio-helper-response-emitter/compare/v1.0.1...v1.0.2) (2021-09-19)
+
+
+### Bug Fixes
+
+* Create and attach response DOM element. ([32789e8](https://github.com/fmecgroup/skripio-helper-response-emitter/commit/32789e8888045f449985c5b72912e5cde317f42f)), closes [AB#1934](https://dev.azure.com/fmec/FMS/_workitems/edit/1934)
+* Links to AB workitems in changelog. ([5141285](https://github.com/fmecgroup/skripio-helper-response-emitter/commit/5141285eca6b25a000422506ec93222af4686196)), closes [AB#1934](https://dev.azure.com/fmec/FMS/_workitems/edit/1934)
+
 ### [1.0.1](https://github.com/fmecgroup/skripio-helper-response-emitter/compare/v1.0.0...v1.0.1) (2021-09-18)
 
 
