@@ -37,6 +37,7 @@
   "standard-version": {
     "scripts": {
       "prerelease": "npm run document-it && git add ./README.md"
-    }
+    },
+    "issueUrlFormat": "https://dev.azure.com/fmec/FMS/_workitems/edit/{{id}}"
   }
 }
