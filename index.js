@@ -2,20 +2,36 @@
 import languages from './modules/languages.js';
 
 /**
-* **A response emitter object.**
-* @param {string} responseDOMElementSelector DOM element selector that will be used to emit async responses.
+* **The response emitter object.**
+* @param {object} args                                    - Constructor arguments object.
+* @param {string} args.responseElementId                  - Id that will be assigned to the response DOM element.
+* @param {string} args.responseElementClass               - CSS class name that will be assigned to the response DOM element.
+* @param {string} [args.parentElementSelector = 'body']   - Selector of a DOM element that response DOM element will be attached to.
 */
 export default class ResponseEmitter {
-  constructor (responseDOMElementSelector) {
+  constructor ({ responseElementId, responseElementClass, parentElementSelector = 'body' }) {
+    let parentDiv;
+
     try {
-      this._responseDiv = document.querySelector(responseDOMElementSelector);
+      parentDiv = document.querySelector(parentElementSelector);
     } catch (error) {
       throw new Error(error.message);
     }
-
-    if (!this._responseDiv) {
-      throw new Error(`Failed to instantiate ResponseEmitter. '${responseDOMElementSelector}' is not a valid selector.`);
+    if (!parentDiv) {
+      throw new Error(`Failed to instantiate ResponseEmitter. '${parentElementSelector}' is not a valid parent element selector.`);
     }
+    if (!responseElementId) {
+      throw new Error(`Failed to instantiate ResponseEmitter. '${responseElementId}' is not a valid id value.`);
+    }
+
+    this._responseDiv = document.createElement('div');
+    this._responseDiv.id = responseElementId;
+
+    if (responseElementClass) {
+      this._responseDiv.classList.add(responseElementClass);
+    }
+
+    parentDiv.appendChild(this._responseDiv);
 
     this._languageCodes = languages.map((element) => {
       return element.code;
@@ -24,10 +40,10 @@ export default class ResponseEmitter {
 
   /**
   * **`ResponseEmitter.codes` constants.**
-  * - **DONE** - 200
-  * - **RESULT** - 201
-  * - **USER_ERROR** - 300
-  * - **DEV_ERROR** - 400
+  * - **DONE**        - 200
+  * - **RESULT**      - 201
+  * - **USER_ERROR**  - 300
+  * - **DEV_ERROR**    - 400
   */
   static get codes () {
     return {
@@ -40,8 +56,8 @@ export default class ResponseEmitter {
 
   /**
   * **Generates 1C formatted notification message from phrases in different languages.**
-  * @param {object} phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
-  * @returns {string} Formatted text or an empty string if object provided contains no keys with language codes listed in [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+  * @param    {object} - Phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
+  * @returns  {string} - Formatted text or an empty string if object provided contains no keys with language codes listed in [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
   * @example
   * {
   *   ru: 'Сообщение на Русском языке.',
@@ -50,7 +66,7 @@ export default class ResponseEmitter {
   */
   get1cFormattedMessage (phrases) {
     if (!phrases || typeof phrases !== 'object') {
-      throw new Error('Invalid phrases object.');
+      throw new Error(`${phrases} object is invalid.`);
     }
 
     let result = '';
@@ -66,11 +82,11 @@ export default class ResponseEmitter {
 
   /**
   * **Generates serialized response message object. Emits `click` event if required.**
-  * @param {*} id Any attribute to be placed against id key of the message object.
-  * @param {*} code Any attribute to be placed against code key of the message object.
-  * @param {*} payload Any attribute to be placed against payload key of the message object.
-  * @param {boolean} click If truthy then click event with serialized message object will be emitted. No event emitting otherwise.
-  * @returns {string} response message object serialized.
+  * @param    {*} id           - Any attribute to be placed against id key of the message object.
+  * @param    {*} code         - Any attribute to be placed against code key of the message object.
+  * @param    {*} payload      - Any attribute to be placed against payload key of the message object.
+  * @param    {boolean} click  - If truthy then click event with serialized message object will be emitted. No event emitting otherwise.
+  * @returns  {string}         - Response message object serialized.
   */
   emitResponse (id, code, payload, click = false) {
     const result = JSON.stringify({
