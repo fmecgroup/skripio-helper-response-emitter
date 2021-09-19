@@ -1,3 +1,4 @@
+'use strict';
 export default [
   { code: 'ab', name: 'Abkhazian' },
   { code: 'aa', name: 'Afar' },

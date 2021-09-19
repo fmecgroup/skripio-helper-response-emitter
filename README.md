@@ -15,14 +15,17 @@ npm install @skripio/response-emitter
 
 # Usage
 
-1.  Import `ResponseEmitter` class and instantiate object passing DOM element selector that points to an element which will receive click event when response message is emitted.
+1.  Import `ResponseEmitter` class and instantiate emitter object. Emitter will create `div` element with id provided and attach it to `body` by default. That can be changed by passing `parentElementSelector` to the constructor.
 
 ```JavaScript
     import ResponseEmitter from '@skripio/response-emitter';
-    const rm = new ResponseEmitter('#response');
+    const re = new ResponseEmitter({
+        responseElementId: 'MyComponentName', 
+        responseElementClass: 'response'
+        });
 ```
 
-2.  Call object methods to emit response message or to do auxiliary stuff.
+1.  Call object methods to emit response message or to do auxiliary stuff.
 
 # Response
 
@@ -58,11 +61,15 @@ where:
 
 ## ResponseEmitter
 
-**A response emitter object.**
+**The response emitter object.**
 
 ### Parameters
 
-*   `responseDOMElementSelector` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** DOM element selector that will be used to emit async responses.
+*   `args` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Constructor arguments object.
+
+    *   `args.responseElementId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Id that will be assigned to the response DOM element.
+    *   `args.responseElementClass` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** CSS class name that will be assigned to the response DOM element.
+    *   `args.parentElementSelector` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Selector of a DOM element that response DOM element will be attached to. (optional, default `'body'`)
 
 ### emitResponse
 
@@ -75,7 +82,7 @@ where:
 *   `payload` **any** Any attribute to be placed against payload key of the message object.
 *   `click` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** If truthy then click event with serialized message object will be emitted. No event emitting otherwise. (optional, default `false`)
 
-Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** response message object serialized.
+Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Response message object serialized.
 
 ### get1cFormattedMessage
 
@@ -83,7 +90,8 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 #### Parameters
 
-*   `phrases` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
+*   `phrases`  
+*   `null-null` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
 
 #### Examples
 
@@ -100,7 +108,7 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 **`ResponseEmitter.codes` constants.**
 
-*   **DONE** - 200
-*   **RESULT** - 201
-*   **USER_ERROR** - 300
-*   **DEV_ERROR** - 400
+*   **DONE**        - 200
+*   **RESULT**      - 201
+*   **USER_ERROR**  - 300
+*   **DEV_ERROR**    - 400
