@@ -56,8 +56,8 @@ where:
 *   [ResponseEmitter](#responseemitter)
     *   [Parameters](#parameters)
     *   [emitResponse](#emitresponse)
-    *   [get1cFormattedMessage](#get1cformattedmessage)
     *   [codes](#codes)
+    *   [getUserMessage](#getusermessage)
 
 ## ResponseEmitter
 
@@ -68,7 +68,7 @@ where:
 *   `args` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Constructor arguments object.
 
     *   `args.responseElementId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Id that will be assigned to the response DOM element.
-    *   `args.responseElementClass` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** CSS class name that will be assigned to the response DOM element.
+    *   `args.responseElementClass` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>)** CSS class(es) that will be assigned to the response DOM element.
     *   `args.parentElementSelector` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Selector of a DOM element that response DOM element will be attached to. (optional, default `'body'`)
 
 ### emitResponse
@@ -84,14 +84,22 @@ where:
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Response message object serialized.
 
-### get1cFormattedMessage
+### codes
 
-**Generates 1C formatted notification message from phrases in different languages.**
+**`ResponseEmitter.codes` constants.**
+
+*   **DONE**        - 200
+*   **RESULT**      - 201
+*   **USER_ERROR**  - 300
+*   **DEV_ERROR**   - 400
+
+### getUserMessage
+
+**`ResponseEmitter.getUserMessage` static method generates 1C formatted notification message from phrases in different languages.**
 
 #### Parameters
 
-*   `phrases`  
-*   `null-null` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
+*   `phrases` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
 
 #### Examples
 
@@ -103,12 +111,3 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 ```
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Formatted text or an empty string if object provided contains no keys with language codes listed in [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO\_639-1\_codes).
-
-### codes
-
-**`ResponseEmitter.codes` constants.**
-
-*   **DONE**        - 200
-*   **RESULT**      - 201
-*   **USER_ERROR**  - 300
-*   **DEV_ERROR**    - 400
