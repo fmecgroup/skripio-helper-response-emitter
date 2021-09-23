@@ -1,6 +1,10 @@
 'use strict';
 import languages from './modules/languages.js';
 
+const languageCodes = languages.map((element) => {
+  return element.code;
+});
+
 /**
 * **The response emitter object.**
 * @param {object} args                                    - Constructor arguments object.
@@ -32,14 +36,11 @@ export default class ResponseEmitter {
     }
 
     parentDiv.appendChild(this._responseDiv);
-
-    this._languageCodes = languages.map((element) => {
-      return element.code;
-    });
   }
 
   /**
   * **`ResponseEmitter.codes` constants.**
+  * @static
   * - **DONE**        - 200
   * - **RESULT**      - 201
   * - **USER_ERROR**  - 300
@@ -56,6 +57,7 @@ export default class ResponseEmitter {
 
   /**
   * **Generates 1C formatted notification message from phrases in different languages.**
+  * @static
   * @param    {object} - Phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
   * @returns  {string} - Formatted text or an empty string if object provided contains no keys with language codes listed in [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
   * @example
@@ -64,16 +66,20 @@ export default class ResponseEmitter {
   *   en: 'Message in English language.'
   * }
   */
-  get1cFormattedMessage (phrases) {
+  static getUserMessage (phrases) {
     if (!phrases || typeof phrases !== 'object') {
-      throw new Error(`${phrases} object is invalid.`);
+      throw new Error(`'${phrases}' phrase object is invalid.`);
     }
 
-    let result = '';
+    let result;
 
     for (const [key, value] of Object.entries(phrases)) {
-      if (this._languageCodes.includes(key)) {
-        result += `${key} = '${value}';`;
+      if (languageCodes.includes(key)) {
+        if(!result){
+          result = `${key} = '${value}'`;
+          continue;
+        }
+        result += `; ${key} = '${value}'`;
       }
     }
 
