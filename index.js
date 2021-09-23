@@ -7,10 +7,10 @@ const languageCodes = languages.map((element) => {
 
 /**
 * **The response emitter object.**
-* @param {object} args                                    - Constructor arguments object.
-* @param {string} args.responseElementId                  - Id that will be assigned to the response DOM element.
-* @param {string} args.responseElementClass               - CSS class name that will be assigned to the response DOM element.
-* @param {string} [args.parentElementSelector = 'body']   - Selector of a DOM element that response DOM element will be attached to.
+* @param {object}             args                                    - Constructor arguments object.
+* @param {string}             args.responseElementId                  - Id that will be assigned to the response DOM element.
+* @param {(string|string[])}  args.responseElementClass               - CSS class(es) that will be assigned to the response DOM element.
+* @param {string}             [args.parentElementSelector = 'body']   - Selector of a DOM element that response DOM element will be attached to.
 */
 export default class ResponseEmitter {
   constructor ({ responseElementId, responseElementClass, parentElementSelector = 'body' }) {
@@ -40,11 +40,10 @@ export default class ResponseEmitter {
 
   /**
   * **`ResponseEmitter.codes` constants.**
-  * @static
   * - **DONE**        - 200
   * - **RESULT**      - 201
   * - **USER_ERROR**  - 300
-  * - **DEV_ERROR**    - 400
+  * - **DEV_ERROR**   - 400
   */
   static get codes () {
     return {
@@ -56,9 +55,8 @@ export default class ResponseEmitter {
   }
 
   /**
-  * **Generates 1C formatted notification message from phrases in different languages.**
-  * @static
-  * @param    {object} - Phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
+  * **`ResponseEmitter.getUserMessage` static method generates 1C formatted notification message from phrases in different languages.**
+  * @param    {object} phrases - Phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
   * @returns  {string} - Formatted text or an empty string if object provided contains no keys with language codes listed in [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
   * @example
   * {

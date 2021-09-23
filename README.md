@@ -68,7 +68,7 @@ where:
 *   `args` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Constructor arguments object.
 
     *   `args.responseElementId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Id that will be assigned to the response DOM element.
-    *   `args.responseElementClass` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** CSS class name that will be assigned to the response DOM element.
+    *   `args.responseElementClass` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>)** CSS class(es) that will be assigned to the response DOM element.
     *   `args.parentElementSelector` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Selector of a DOM element that response DOM element will be attached to. (optional, default `'body'`)
 
 ### emitResponse
@@ -88,14 +88,18 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 **`ResponseEmitter.codes` constants.**
 
+*   **DONE**        - 200
+*   **RESULT**      - 201
+*   **USER_ERROR**  - 300
+*   **DEV_ERROR**   - 400
+
 ### getUserMessage
 
-**Generates 1C formatted notification message from phrases in different languages.**
+**`ResponseEmitter.getUserMessage` static method generates 1C formatted notification message from phrases in different languages.**
 
 #### Parameters
 
-*   `phrases`  
-*   `null-null` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
+*   `phrases` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Phrases Object that contains phrases in different languages where **key** must be language code and **value** contains phrase in that language.
 
 #### Examples
 
