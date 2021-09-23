@@ -56,8 +56,8 @@ where:
 *   [ResponseEmitter](#responseemitter)
     *   [Parameters](#parameters)
     *   [emitResponse](#emitresponse)
-    *   [get1cFormattedMessage](#get1cformattedmessage)
     *   [codes](#codes)
+    *   [getUserMessage](#getusermessage)
 
 ## ResponseEmitter
 
@@ -84,7 +84,11 @@ where:
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Response message object serialized.
 
-### get1cFormattedMessage
+### codes
+
+**`ResponseEmitter.codes` constants.**
+
+### getUserMessage
 
 **Generates 1C formatted notification message from phrases in different languages.**
 
@@ -103,12 +107,3 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 ```
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Formatted text or an empty string if object provided contains no keys with language codes listed in [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO\_639-1\_codes).
-
-### codes
-
-**`ResponseEmitter.codes` constants.**
-
-*   **DONE**        - 200
-*   **RESULT**      - 201
-*   **USER_ERROR**  - 300
-*   **DEV_ERROR**    - 400
