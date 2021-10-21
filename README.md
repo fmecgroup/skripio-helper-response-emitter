@@ -77,7 +77,7 @@ where:
 
 #### Parameters
 
-*   `id` **any** Any attribute to be placed against id key of the message object.
+*   `callback` **any** Any attribute to be placed against id key of the message object.
 *   `code` **any** Any attribute to be placed against code key of the message object.
 *   `payload` **any** Any attribute to be placed against payload key of the message object.
 *   `click` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** If truthy then click event with serialized message object will be emitted. No event emitting otherwise. (optional, default `false`)
